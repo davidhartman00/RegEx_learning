@@ -12,7 +12,7 @@ c.this == [1,2,3,4,5,6]
 c.that == ['here', 'there', 'everywhere']
 c.other == 100
 */
-
+// ASSUMTION - that h is a javascript object, and thus conforming to javascript object notation. 
 class ConvertObj {
     constructor(obj){
 
