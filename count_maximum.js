@@ -16,16 +16,20 @@ For example, given N = 1041 the function should return 5, because N has binary r
 */
 
 function zeros_count(int){
-    try {
-        return Math.max(           //last operation run - returns the largest number provided
-            ...Math.abs(int)//two things: first the spread '...' opporator breaking down the array into elements
-                //and Math.abs to convert the given integer into a an integer object to work with .toString()
-                .toString(2)    // changes int into a string in the binary format
-                .match(/0+/g)   //returnes an array of elements for each regex match
-                .map(el => el.length)//loops over the array and returns a new arry consisting of the legth value of each 
-            //element in the first array.
-        )        
-    } catch (error) {
-        return 0
-    }
+
+    let arr1 = Math.abs(int) //Math.abs to convert the given integer into a an integer object to work with .toString()
+        .toString(2)    // changes int into a string in the binary format
+        .match(/0+/g)   //returnes an array of elements with each element a regex match
+
+    arr2 = arr1 ? arr1.map(el => el.length) : [0] //to be sure there are regex matches, if so 
+                                                // create new arrary of lengths. If not an array of zero
+
+    return Math.max(...arr2) //return the largest number from the secound arr
+ 
 }
+
+// Time complexity: as there is only one loop, .map(), the time complexity is O(n) a linear algorithm.
+// Space complexity: as int gets larger the binary string from .toString() grows. This is a space complexity of 0(n log n) 
+
+
+
